@@ -12,6 +12,7 @@ public class Grid {
 	public final static int EAST = 1;
 	public final static int SOUTH = 2;
 	public final static int WEST = 3;
+	public final static int NB_DIR = 4;
 
 	public Grid(String str) {
 		this.str = str;
@@ -25,6 +26,11 @@ public class Grid {
 		if (freeTile == -1) {
 			throw new RuntimeException("Character '_' not found");
 		}
+	}
+	
+	public Grid(Grid original) {
+		str = original.str; // Strings are immutable
+		freeTile = original.freeTile;
 	}
 
 	@Override
@@ -46,7 +52,7 @@ public class Grid {
 	/**
 	 * @param direction Either NORTH, EAST, SOUTH or WEST
 	 */
-	public void move(int direction) {
+	public Grid move(int direction) {
 		if (!isMovable(direction)) {
 			throw new RuntimeException("Not movable");
 		}
@@ -72,6 +78,8 @@ public class Grid {
 		
 		swap(freeTile, newFreeTile);
 		freeTile = newFreeTile;
+		
+		return this;
 	}
 	
 	/**
