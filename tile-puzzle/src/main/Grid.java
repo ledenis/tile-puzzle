@@ -121,4 +121,21 @@ public class Grid {
 	public boolean equalsStr(String state) {
 		return str.equals(state);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Grid)) {
+			return false;
+		}
+		
+		Grid other = (Grid) obj;
+		
+		// Check the string
+		if (other.equalsStr(str)) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 }
