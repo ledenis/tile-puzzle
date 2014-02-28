@@ -18,6 +18,7 @@ public class Main {
 		grid.move(Grid.WEST);
 		grid.move(Grid.NORTH);
 		System.out.println(grid);
+		System.out.println(grid.equalsStr("142_9637ABC0"));
 	}
 }
 

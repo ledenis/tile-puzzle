@@ -110,4 +110,7 @@ public class Grid {
 		str = new String(array);
 	}
 
+	public boolean equalsStr(String state) {
+		return str.equals(state);
+	}
 }
