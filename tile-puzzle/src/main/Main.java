@@ -4,16 +4,19 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("hello");
 		
-		Grid grid = new Grid("dbadc_addbbd");
-//		Grid grid = new Grid("_1234679ABC0");
+//		Grid grid = new Grid("dbadc_addbbd");
+		Grid grid = new Grid("_1234679ABC0");
 		System.out.println(grid);
 		
 		System.out.println(grid.isMovable(Grid.NORTH));
 		System.out.println(grid.isMovable(Grid.EAST));
 		System.out.println(grid.isMovable(Grid.SOUTH));
 		System.out.println(grid.isMovable(Grid.WEST));
-		
 		grid.move(Grid.EAST);
+		grid.move(Grid.SOUTH);
+		grid.move(Grid.SOUTH);
+		grid.move(Grid.WEST);
+		grid.move(Grid.NORTH);
 		System.out.println(grid);
 	}
 }

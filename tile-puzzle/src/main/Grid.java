@@ -47,17 +47,31 @@ public class Grid {
 	 * @param direction Either NORTH, EAST, SOUTH or WEST
 	 */
 	public void move(int direction) {
+		if (!isMovable(direction)) {
+			throw new RuntimeException("Not movable");
+		}
+		
+		int newFreeTile;
+		
 		switch(direction) {
 		case NORTH:
+			newFreeTile = freeTile - WIDTH;
 			break;
 		case EAST:
+			newFreeTile = freeTile + 1;
 			break;
 		case SOUTH:
+			newFreeTile = freeTile + WIDTH;
 			break;
 		case WEST:
+			newFreeTile = freeTile - 1;
 			break;
 		default:
+			throw new RuntimeException("Wrong direction");
 		}
+		
+		swap(freeTile, newFreeTile);
+		freeTile = newFreeTile;
 	}
 	
 	/**
@@ -84,6 +98,16 @@ public class Grid {
 		default:
 			throw new RuntimeException("Wrong direction");
 		}
+	}
+
+	private void swap(int i, int j) {
+		char[] array = str.toCharArray();
+		
+		char tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+		
+		str = new String(array);
 	}
 
 }
