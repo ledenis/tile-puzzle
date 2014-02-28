@@ -1,5 +1,7 @@
 package main;
 
+import java.util.List;
+
 import main.solver.DepthLimitedSolver;
 
 public class Main {
@@ -26,7 +28,13 @@ public class Main {
 		
 		System.out.println("Solve");
 		DepthLimitedSolver solver = new DepthLimitedSolver();
-		Grid.printSolution((solver.solve(grid, gridGoal, 8)));
+		List<Grid> sol = solver.solve(grid, gridGoal, 8);
+		Grid.printSolution(sol);
+		Grid g1 = sol.get(0);
+		Grid g2 = sol.get(8);
+		System.out.println(g1.wrongPlaced(g2));
+		System.out.println(g1);
+		System.out.println(g2);
 //		System.out.println(solver.solve(gridOrig, grid, 5));
 	}
 }

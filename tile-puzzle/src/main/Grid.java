@@ -178,4 +178,21 @@ public class Grid {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * @return Nb of out of place tiles, excluding the free tile
+	 */
+	public int wrongPlaced(Grid dest) {
+		int count = 0;
+
+		// For each tile
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			// if not free tile && out of place
+			if (c != '_' && c != dest.str.charAt(i)) {
+				count++;
+			}
+		}
+		return count;
+	}
 }
