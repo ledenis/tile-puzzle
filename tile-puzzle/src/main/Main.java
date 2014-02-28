@@ -17,15 +17,15 @@ public class Main {
 		System.out.println(grid.isMovable(Grid.WEST));
 		grid.move(Grid.EAST);
 		grid.move(Grid.SOUTH);
-		grid.move(Grid.SOUTH);
 		grid.move(Grid.WEST);
 		grid.move(Grid.NORTH);
+		grid.move(Grid.SOUTH);
 		System.out.println(grid);
 		System.out.println(grid.equalsStr("142_9637ABC0"));
 		
-		System.out.println("NextConfigs");
+		System.out.println("Solve");
 		DepthLimitedSolver solver = new DepthLimitedSolver();
-		System.out.println(solver.nextConfigs(grid));
+		System.out.println(solver.solve(gridOrig, grid, 5));
 	}
 }
 
