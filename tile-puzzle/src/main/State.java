@@ -3,7 +3,7 @@ package main;
 import java.util.LinkedList;
 import java.util.List;
 
-public class State {
+public class State implements Comparable<State> {
 	List<Grid> route; // From start to current grid
 	int g; // Actual cost
 	int h; // From current to goal (heuristic)
@@ -37,5 +37,14 @@ public class State {
 		clone.h = nextH;
 
 		return clone;
+	}
+
+	@Override
+	public int compareTo(State other) {
+		if (g + h > other.g + other.h)
+			return 1;
+		else if (g + h < other.g + other.h)
+			return -1;
+		return 0;
 	}
 }
