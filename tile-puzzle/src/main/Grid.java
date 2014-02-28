@@ -182,7 +182,7 @@ public class Grid {
 	/**
 	 * @return Nb of out of place tiles, excluding the free tile
 	 */
-	public int wrongPlaced(Grid dest) {
+	public int wrongTiles(Grid dest) {
 		int count = 0;
 
 		// For each tile

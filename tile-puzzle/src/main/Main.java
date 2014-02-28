@@ -32,7 +32,7 @@ public class Main {
 		Grid.printSolution(sol);
 		Grid g1 = sol.get(0);
 		Grid g2 = sol.get(8);
-		System.out.println(g1.wrongPlaced(g2));
+		System.out.println(g1.wrongTiles(g2));
 		System.out.println(g1);
 		System.out.println(g2);
 //		System.out.println(solver.solve(gridOrig, grid, 5));
