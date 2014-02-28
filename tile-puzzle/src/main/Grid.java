@@ -1,12 +1,14 @@
 package main;
 
+import java.util.List;
+
 public class Grid {
 	private static final int HEIGHT = 4;
 	private static final int WIDTH = 3;
-	
+
 	private String str;
 	private int freeTile;
-	
+
 	// Directions
 	public final static int NORTH = 0;
 	public final static int EAST = 1;
@@ -16,18 +18,18 @@ public class Grid {
 
 	public Grid(String str) {
 		this.str = str;
-		
+
 		if (str.length() != 12) {
 			throw new RuntimeException("length != 12");
 		}
-		
+
 		freeTile = str.indexOf('_');
-		
+
 		if (freeTile == -1) {
 			throw new RuntimeException("Character '_' not found");
 		}
 	}
-	
+
 	public Grid(Grid original) {
 		str = original.str; // Strings are immutable
 		freeTile = original.freeTile;
@@ -48,18 +50,19 @@ public class Grid {
 	public int getFreeTile() {
 		return freeTile;
 	}
-	
+
 	/**
-	 * @param direction Either NORTH, EAST, SOUTH or WEST
+	 * @param direction
+	 *            Either NORTH, EAST, SOUTH or WEST
 	 */
 	public Grid move(int direction) {
 		if (!isMovable(direction)) {
 			throw new RuntimeException("Not movable");
 		}
-		
+
 		int newFreeTile;
-		
-		switch(direction) {
+
+		switch (direction) {
 		case NORTH:
 			newFreeTile = freeTile - WIDTH;
 			break;
@@ -75,18 +78,19 @@ public class Grid {
 		default:
 			throw new RuntimeException("Wrong direction");
 		}
-		
+
 		swap(freeTile, newFreeTile);
 		freeTile = newFreeTile;
-		
+
 		return this;
 	}
-	
+
 	/**
-	 * @param direction Either NORTH, EAST, SOUTH or WEST
+	 * @param direction
+	 *            Either NORTH, EAST, SOUTH or WEST
 	 */
 	public boolean isMovable(int direction) {
-		switch(direction) {
+		switch (direction) {
 		case NORTH:
 			if (freeTile / WIDTH == 0)
 				return false;
@@ -110,11 +114,11 @@ public class Grid {
 
 	private void swap(int i, int j) {
 		char[] array = str.toCharArray();
-		
+
 		char tmp = array[i];
 		array[i] = array[j];
 		array[j] = tmp;
-		
+
 		str = new String(array);
 	}
 
@@ -127,15 +131,30 @@ public class Grid {
 		if (!(obj instanceof Grid)) {
 			return false;
 		}
-		
+
 		Grid other = (Grid) obj;
-		
+
 		// Check the string
 		if (other.equalsStr(str)) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
+	public static void printSolution(List<Grid> sol) {
+		// For each line
+		for (int i = 0; i < HEIGHT; i++) {
+
+			// For each grid (backward)
+			for (int g = sol.size() - 1; g >= 0; g--) {
+				Grid grid = sol.get(g);
+
+				// Print its line
+				System.out.print(grid.str.substring(i * WIDTH, i * WIDTH
+						+ WIDTH)
+						+ " ");
+			}
+			System.out.println();
+		}
+	}
 }

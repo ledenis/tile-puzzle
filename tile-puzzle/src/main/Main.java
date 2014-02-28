@@ -25,7 +25,8 @@ public class Main {
 		
 		System.out.println("Solve");
 		DepthLimitedSolver solver = new DepthLimitedSolver();
-		System.out.println(solver.solve(gridOrig, grid, 5));
+		Grid.printSolution((solver.solve(gridOrig, grid, 5)));
+//		System.out.println(solver.solve(gridOrig, grid, 5));
 	}
 }
 
