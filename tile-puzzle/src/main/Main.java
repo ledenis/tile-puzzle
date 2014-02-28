@@ -6,26 +6,27 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("hello");
 		
-//		Grid grid = new Grid("dbadc_addbbd");
-		Grid gridOrig = new Grid("_1234679ABC0");
-		Grid grid = new Grid(gridOrig);
-		System.out.println(grid);
-		
-		System.out.println(grid.isMovable(Grid.NORTH));
-		System.out.println(grid.isMovable(Grid.EAST));
-		System.out.println(grid.isMovable(Grid.SOUTH));
-		System.out.println(grid.isMovable(Grid.WEST));
-		grid.move(Grid.EAST);
-		grid.move(Grid.SOUTH);
-		grid.move(Grid.WEST);
-		grid.move(Grid.NORTH);
-		grid.move(Grid.SOUTH);
-		System.out.println(grid);
-		System.out.println(grid.equalsStr("142_9637ABC0"));
+		Grid grid = new Grid("dbad_caddbbd");
+		Grid gridGoal = new Grid("_baddcaddbdb");
+//		Grid gridOrig = new Grid("_1234679ABC0");
+//		Grid grid = new Grid(gridOrig);
+//		System.out.println(grid);
+//		
+//		System.out.println(grid.isMovable(Grid.NORTH));
+//		System.out.println(grid.isMovable(Grid.EAST));
+//		System.out.println(grid.isMovable(Grid.SOUTH));
+//		System.out.println(grid.isMovable(Grid.WEST));
+//		grid.move(Grid.EAST);
+//		grid.move(Grid.SOUTH);
+//		grid.move(Grid.WEST);
+//		grid.move(Grid.NORTH);
+//		grid.move(Grid.SOUTH);
+//		System.out.println(grid);
+//		System.out.println(grid.equalsStr("142_9637ABC0"));
 		
 		System.out.println("Solve");
 		DepthLimitedSolver solver = new DepthLimitedSolver();
-		Grid.printSolution((solver.solve(gridOrig, grid, 5)));
+		Grid.printSolution((solver.solve(grid, gridGoal, 8)));
 //		System.out.println(solver.solve(gridOrig, grid, 5));
 	}
 }

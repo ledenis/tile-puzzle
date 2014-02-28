@@ -1,5 +1,7 @@
 package main;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class Grid {
@@ -142,6 +144,13 @@ public class Grid {
 	}
 
 	public static void printSolution(List<Grid> sol) {
+		if (sol == null) {
+			System.out.println("No solution");
+			return;
+		}
+
+		StringBuilder sb = new StringBuilder();
+
 		// For each line
 		for (int i = 0; i < HEIGHT; i++) {
 
@@ -150,11 +159,23 @@ public class Grid {
 				Grid grid = sol.get(g);
 
 				// Print its line
-				System.out.print(grid.str.substring(i * WIDTH, i * WIDTH
-						+ WIDTH)
+				sb.append(grid.str.substring(i * WIDTH, i * WIDTH + WIDTH)
 						+ " ");
 			}
-			System.out.println();
+			sb.append('\n');
+		}
+
+		// Print
+		System.out.print(sb.toString());
+
+		// Write to file
+		try {
+			PrintWriter out = new PrintWriter(sol.get(sol.size() - 1).str + "2"
+					+ sol.get(0).str + ".txt");
+			out.print(sb.toString());
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }
