@@ -47,4 +47,8 @@ public class State implements Comparable<State> {
 			return -1;
 		return 0;
 	}
+
+	public Grid getLastGrid() {
+		return route.get(route.size() - 1);
+	}
 }
