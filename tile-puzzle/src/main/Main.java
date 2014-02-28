@@ -1,11 +1,14 @@
 package main;
 
+import main.solver.DepthLimitedSolver;
+
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("hello");
 		
 //		Grid grid = new Grid("dbadc_addbbd");
-		Grid grid = new Grid("_1234679ABC0");
+		Grid gridOrig = new Grid("_1234679ABC0");
+		Grid grid = new Grid(gridOrig);
 		System.out.println(grid);
 		
 		System.out.println(grid.isMovable(Grid.NORTH));
@@ -19,6 +22,10 @@ public class Main {
 		grid.move(Grid.NORTH);
 		System.out.println(grid);
 		System.out.println(grid.equalsStr("142_9637ABC0"));
+		
+		System.out.println("NextConfigs");
+		DepthLimitedSolver solver = new DepthLimitedSolver();
+		System.out.println(solver.nextConfigs(grid));
 	}
 }
 
