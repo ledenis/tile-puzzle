@@ -46,6 +46,6 @@ public class AStarSolver extends Solver {
 //		System.out.println();
 		
 		// Or print directly
-		System.out.println(states);
+//		System.out.println(states);
 	}
 }
