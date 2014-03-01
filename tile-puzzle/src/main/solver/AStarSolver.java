@@ -6,6 +6,9 @@ import java.util.PriorityQueue;
 import main.Grid;
 import main.State;
 
+/**
+ * A* solver
+ */
 public class AStarSolver extends Solver {
 	public List<Grid> solve(Grid start, Grid dest) {
 		// Init

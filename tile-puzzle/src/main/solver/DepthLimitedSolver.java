@@ -5,6 +5,9 @@ import java.util.List;
 
 import main.Grid;
 
+/**
+ * Depth limited search solver
+ */
 public class DepthLimitedSolver extends Solver {
 
 	public List<Grid> solve(Grid start, Grid dest, int depth) {
