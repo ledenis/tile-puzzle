@@ -27,6 +27,7 @@ public class State implements Comparable<State> {
 
 	public State cloneAndAdd(Grid next, int nextH) {
 		State clone = new State();
+		clone.route = new LinkedList<>();
 
 		for (Grid gr : route) {
 			clone.route.add(gr);
@@ -41,11 +42,7 @@ public class State implements Comparable<State> {
 
 	@Override
 	public int compareTo(State other) {
-		if (g + h > other.g + other.h)
-			return 1;
-		else if (g + h < other.g + other.h)
-			return -1;
-		return 0;
+		return Integer.compare(g+h, other.g + other.h);
 	}
 
 	public Grid getLastGrid() {
@@ -54,5 +51,10 @@ public class State implements Comparable<State> {
 
 	public List<Grid> getRoute() {
 		return route;
+	}
+
+	@Override
+	public String toString() {
+		return "" + (g + h);
 	}
 }
