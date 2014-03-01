@@ -154,8 +154,8 @@ public class Grid {
 		// For each line
 		for (int i = 0; i < HEIGHT; i++) {
 
-			// For each grid (backward)
-			for (int g = sol.size() - 1; g >= 0; g--) {
+			// For each grid
+			for (int g = 0; g < sol.size(); g++) {
 				Grid grid = sol.get(g);
 
 				// Print its line
@@ -170,8 +170,8 @@ public class Grid {
 
 		// Write to file
 		try {
-			PrintWriter out = new PrintWriter(sol.get(sol.size() - 1).str + "2"
-					+ sol.get(0).str + ".txt");
+			PrintWriter out = new PrintWriter(sol.get(0).str + "2"
+					+ sol.get(sol.size() - 1).str + ".txt");
 			out.print(sb.toString());
 			out.close();
 		} catch (FileNotFoundException e) {
