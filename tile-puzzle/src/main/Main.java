@@ -1,31 +1,35 @@
 package main;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
-import main.solver.DepthLimitedSolver;
+import main.solver.AStarSolver;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("hello");
+		// Input
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please copy/paste the problem: ");
+		String problem = sc.nextLine();
+		sc.close();
 
 		Grid gridStart;
 		Grid gridGoal;
-		String problem = "dbad_caddbbd2_baddcaddbdb.txt";
 		gridStart = new Grid(problem.substring(0, 12));
 		gridGoal = new Grid(problem.substring(13, 13 + 12));
 
 		System.out.println("Solve");
-		
+
 		// A*
-//		AStarSolver solver = new AStarSolver();
-//		List<Grid> sol = solver.solve(gridStart, gridGoal);
-		
+		AStarSolver solver = new AStarSolver();
+		List<Grid> sol = solver.solve(gridStart, gridGoal);
+
 		// Depth limited
-		 DepthLimitedSolver solver = new DepthLimitedSolver();
-		 List<Grid> sol = solver.solve(gridStart, gridGoal, 8);
-		 Collections.reverse(sol); // the list is reversed
-		
+		// DepthLimitedSolver solver = new DepthLimitedSolver();
+		// List<Grid> sol = solver.solve(gridStart, gridGoal, 8);
+		// if (sol != null)
+		// Collections.reverse(sol); // the list is reversed
+
 		Grid.printSolution(sol);
 	}
 }
