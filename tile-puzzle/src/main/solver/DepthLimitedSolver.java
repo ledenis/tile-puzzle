@@ -21,12 +21,12 @@ public class DepthLimitedSolver extends Solver {
 		// Recursive call on next configs
 		List<Grid> nextConfigs = nextConfigs(start);
 		for (Grid next : nextConfigs) {
-			List<Grid> result = solve(next, dest, depth - 1);
+			List<Grid> route = solve(next, dest, depth - 1);
 
 			// Found solution
-			if (result != null) {
-				result.add(start); // Add at the end
-				return result;
+			if (route != null) {
+				route.add(start); // Add at the end
+				return route;
 			}
 		}
 
