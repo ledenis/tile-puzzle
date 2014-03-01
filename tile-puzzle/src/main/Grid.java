@@ -4,6 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Represent a grid 3x4 It is implemented as a String (each char is a tile) The
+ * free tile is represented as '_'. Plus, its position is stored as an int. Can
+ * be manipulated with move(), and check if it is movable()
+ */
 public class Grid {
 	private static final int HEIGHT = 4;
 	private static final int WIDTH = 3;
@@ -18,6 +23,11 @@ public class Grid {
 	public final static int WEST = 3;
 	public final static int NB_DIR = 4;
 
+	/**
+	 * @param str
+	 *            The string that represents the grid. Its length must = 12,
+	 *            must contains '_'
+	 */
 	public Grid(String str) {
 		this.str = str;
 
@@ -32,13 +42,20 @@ public class Grid {
 		}
 	}
 
+	/**
+	 * Copy constructor. The original is unchanged
+	 * 
+	 * @param original
+	 */
 	public Grid(Grid original) {
 		str = original.str; // Strings are immutable
 		freeTile = original.freeTile;
 	}
 
+	/**
+	 * @return a readable format of the grid (debugging)
+	 */
 	@Override
-	// Return a readable format of the grid
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(freeTile + "\n");
@@ -49,6 +66,9 @@ public class Grid {
 		return sb.toString();
 	}
 
+	/**
+	 * @return position of the free tile '_'. start from 0
+	 */
 	public int getFreeTile() {
 		return freeTile;
 	}
@@ -143,6 +163,12 @@ public class Grid {
 		return false;
 	}
 
+	/**
+	 * Print the solution to stdout and to the corresponding txt file
+	 * 
+	 * @param sol
+	 *            the solution, ordered list of grids, from start to goal
+	 */
 	public static void printSolution(List<Grid> sol) {
 		if (sol == null) {
 			System.out.println("No solution");
