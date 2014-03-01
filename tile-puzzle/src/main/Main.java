@@ -2,7 +2,7 @@ package main;
 
 import java.util.List;
 
-import main.solver.DepthLimitedSolver;
+import main.solver.AStarSolver;
 
 public class Main {
 	public static void main(String[] args) {
@@ -27,8 +27,10 @@ public class Main {
 //		System.out.println(grid.equalsStr("142_9637ABC0"));
 		
 		System.out.println("Solve");
-		DepthLimitedSolver solver = new DepthLimitedSolver();
-		List<Grid> sol = solver.solve(grid, gridGoal, 8);
+		AStarSolver solver = new AStarSolver();
+		List<Grid> sol = solver.solve(grid, gridGoal);
+//		DepthLimitedSolver solver = new DepthLimitedSolver();
+//		List<Grid> sol = solver.solve(grid, gridGoal, 8);
 		Grid.printSolution(sol);
 		Grid g1 = sol.get(0);
 		Grid g2 = sol.get(8);
