@@ -1,16 +1,28 @@
 package main;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 import main.solver.AStarSolver;
+import main.solver.DepthLimitedSolver;
 
 public class Main {
 	public static void main(String[] args) {
 		// Input
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Please copy/paste the problem: ");
 		String problem = sc.nextLine();
+		
+		System.out.println("1. A*\n2. Depth limited");
+		int solver = sc.nextInt();
+		
+		int depth = 0;
+		if (solver == 2) {
+			System.out.println("Depth?");
+			depth = sc.nextInt();
+		}
 		sc.close();
 
 		Grid gridStart;
@@ -20,16 +32,24 @@ public class Main {
 
 		System.out.println("Solve");
 
-		// A*
-		AStarSolver solver = new AStarSolver();
-		List<Grid> sol = solver.solve(gridStart, gridGoal);
-
-		// Depth limited
-		// DepthLimitedSolver solver = new DepthLimitedSolver();
-		// List<Grid> sol = solver.solve(gridStart, gridGoal, 8);
-		// if (sol != null)
-		// Collections.reverse(sol); // the list is reversed
-
+		List<Grid> sol;
+		
+		switch(solver) {
+		case 1: // A*
+			AStarSolver aSolver = new AStarSolver();
+			sol = aSolver.solve(gridStart, gridGoal);
+			break;
+		case 2: // Depth limited
+			 DepthLimitedSolver dSolver = new DepthLimitedSolver();
+			 sol = dSolver.solve(gridStart, gridGoal, depth);
+			 if (sol != null)
+			 Collections.reverse(sol); // the list is reversed
+			break;
+		default:
+			System.out.println("Please choose 1 or 2s");
+			return;
+		}
+		
 		Grid.printSolution(sol);
 	}
 }

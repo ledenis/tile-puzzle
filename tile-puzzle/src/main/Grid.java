@@ -167,6 +167,7 @@ public class Grid {
 
 		// Print
 		System.out.print(sb.toString());
+		System.out.println("" + (sol.size() - 1) + " moves");
 
 		// Write to file
 		try {
