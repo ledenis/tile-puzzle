@@ -7,17 +7,23 @@ import java.util.Scanner;
 import main.solver.AStarSolver;
 import main.solver.DepthLimitedSolver;
 
+/**
+ * The program solves a 11-tile (3x4 including the free tile) puzzle with A* or
+ * Depth limited according to the user choice When prompted, the format of the
+ * problem is xxxxxxxxxx2yyyyyyyyyyyy.txt with xxxxxxxxxxxx = start and
+ * yyyyyyyyyyyy = goal
+ */
 public class Main {
 	public static void main(String[] args) {
 		// Input
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("Please copy/paste the problem: ");
 		String problem = sc.nextLine();
-		
+
 		System.out.println("1. A*\n2. Depth limited");
 		int solver = sc.nextInt();
-		
+
 		int depth = 0;
 		if (solver == 2) {
 			System.out.println("Depth?");
@@ -33,23 +39,23 @@ public class Main {
 		System.out.println("Solve");
 
 		List<Grid> sol;
-		
-		switch(solver) {
+
+		switch (solver) {
 		case 1: // A*
 			AStarSolver aSolver = new AStarSolver();
 			sol = aSolver.solve(gridStart, gridGoal);
 			break;
 		case 2: // Depth limited
-			 DepthLimitedSolver dSolver = new DepthLimitedSolver();
-			 sol = dSolver.solve(gridStart, gridGoal, depth);
-			 if (sol != null)
-			 Collections.reverse(sol); // the list is reversed
+			DepthLimitedSolver dSolver = new DepthLimitedSolver();
+			sol = dSolver.solve(gridStart, gridGoal, depth);
+			if (sol != null)
+				Collections.reverse(sol); // the list is reversed
 			break;
 		default:
 			System.out.println("Please choose 1 or 2s");
 			return;
 		}
-		
+
 		Grid.printSolution(sol);
 	}
 }
